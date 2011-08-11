@@ -24,10 +24,6 @@ helpers do
   alias_method :h, :escape_html
 end
 
-not_found do
-  redirect '/404.html'
-end
-
 get '/stylesheets/:name.css' do
   content_type 'text/css', :charset => 'utf-8'
   scss :"stylesheets/#{params[:name]}"
