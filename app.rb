@@ -1,10 +1,12 @@
 require 'rubygems'
+require './github'
 require 'sinatra'
 require 'haml'
 require 'sass'
-Dir["lib/**/*.rb"].each {|f| require "./#{f}"}
 
-# Allow rendering of partials. https://gist.github.com/119874
+Dir["lib/**/*.rb"].each {|f| require "./#{f}"}
+Dir['routes/*'].each { |r| require "./#{r}"}
+
 helpers Sinatra::Partials
 
 configure do

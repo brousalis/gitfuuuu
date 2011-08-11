@@ -26,10 +26,11 @@
         .header
           %h1
             %a{:href=>"/"} git fuuuu
-          %h2 A GitHub swear word analyzer
+          %h2 A GitHub curse word analyzer
           %a#info{:href => "#"} 
         %form{:action => "/repos"} 
           .rage
+          %label{:style => "display:none;", :for => "repo"} Repo
           %input{:name => "repo", :placeholder => "What repository to analyze?", :type => "text"}/
 
   = partial :'partials/javascripts'
