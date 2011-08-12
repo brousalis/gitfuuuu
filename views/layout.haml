@@ -14,7 +14,6 @@
 
   %link(rel="stylesheet" href="stylesheets/style.css")
   %link(rel="stylesheet" href="stylesheets/app.css")
-  %link(rel="stylesheet" href="stylesheets/plot.css")
   %link(rel="stylesheet" href="aristo/ui.css")
 
   %script(type="text/javascript" src="javascripts/libs/modernizr-1.7.min.js")
@@ -36,7 +35,15 @@
 
       .results
         %a#back{:href => "#"}
-        %h1 
-        %h2
-        %ol.commits
+        %h1
+        %h2    
+        %h3.none 
+          Sorry, this repo has a
+          %em clean
+          mouth.
+        #plot
+          %ol.commits
+
+      #footer
+        %a{:href=>"http://brousalis.com"} made by pete
   = partial :'partials/javascripts'

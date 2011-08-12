@@ -20,9 +20,14 @@ input:focus {color:#777;outline: none;-webkit-box-shadow: inset 0px 1px 3px rgba
 .results h1{ text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.55), 0px 0px 1px rgba(0, 0, 0, 0.3);font-size:46px;font-family:proxima-nova-1,proxima-nova-2;font-weight:800}
 .results h2{color:#eee;text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.55), 0px 0px 1px rgba(0, 0, 0, 0.3);font-size:20px;font-family:proxima-nova-1,proxima-nova-2;margin-top:1px;}
 .results h2 strong{font-weight:800}
-.results ol{color:#eee;margin-left:2em}
+.results h3{font-family:proxima-nova-1,proxima-nova-2;font-size:24px;}
+.results h3 em{font-weight:800}
+.results ol{color:#eee;margin-left:2.5em;margin-bottom:7px;}
 .results li{color:#fff;padding:7px 9px;border-bottom:1px dotted #444;}
-.results li:first-child{border-radius:5px 5px 0px 0px;-webkit-border-radius:5px 5px 0px 0px; -moz-border-radius:5px 5px 0px 0px}
-.results li:last-child{border-radius:0px 0px 5px 5px;-webkit-border-radius:0px 0px 5px 5px;; -moz-border-radius:0px 0px 5px 5px;}
+.results li:hover{background:#777;}
 .stripe{background:#888 !important;}
+.stripe:hover{background:#999 !important;}
 .results li:last-child{border-bottom:0}
+#plot{margin-bottom:20px;display:none;margin-top:50px;}
+#footer{margin:0 auto;margin-top:100px;width:100px;}
+#footer a{color:#ccc;text-shadow:0px 1px 0px #fff;margin: 0 auto;text-align:center;position:fixed;bottom:20px;}
