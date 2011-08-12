@@ -16,10 +16,7 @@ class GitHub
   def self.search_for_repo(repo)
     repos = []
     repos += search_repos(repo).map do |r|
-      {
-        :name => r[:name],
-        :owner=> r[:owner]
-      }
+      {:name => r[:name], :owner=> r[:owner]}
     end
     repos
   end
@@ -32,7 +29,8 @@ class GitHub
     commits = self.get_commits(repo)
     commits.each do |commit|
       commit[:message].split(" ").each do |word|
-        word = Lingua::Stemmer.new.stem word.downcase!
+        word.downcase!
+        word = Lingua::Stemmer.new.stem word
         if words.include?(word)
           word_count[word] ||= 0
           word_count[word] += 1
@@ -58,13 +56,11 @@ class GitHub
 
   def self.get_commits(repo)
     commits = []
-    json = self.get(API[:commits]+"#{repo[:user]}/#{repo[:repo]}/master/")["commits"]
+    json = self.get(API[:commits]+"#{repo[:user]}/#{repo[:repo]}/master/?page")["commits"]
     commits += json.map do |commit|
-      {
-        :user => commit["committer"]["login"] != "" ? commit["committer"]["login"] : commit["committer"]["name"],
+      {:user => commit["committer"]["login"] != "" ? commit["committer"]["login"] : commit["committer"]["name"],
         :message => commit["message"],
-        :date_time => commit["committed_date"]
-      }
+        :date_time => commit["committed_date"]}
     end
     commits
   end
