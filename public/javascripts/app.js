@@ -65,8 +65,8 @@ $(document).ready(function(){
   }
   
   $('#back').click(function(e){
-    $(".results").fadeOut(1000);
-    $(".panel").delay(700).animate({ marginTop:"140px"}, 700);
+    $(".results").fadeOut(400);
+    $(".panel").delay(700).animate({ marginTop:"240px"}, 700);
     $("input").delay(700).val("").focus();
   });
 

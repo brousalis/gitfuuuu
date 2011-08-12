@@ -58,9 +58,11 @@ class GitHub
     commits = []
     json = self.get(API[:commits]+"#{repo[:user]}/#{repo[:repo]}/master/?page")["commits"]
     commits += json.map do |commit|
-      {:user => commit["committer"]["login"] != "" ? commit["committer"]["login"] : commit["committer"]["name"],
+      {
+        :user => commit["committer"]["login"] != "" ? commit["committer"]["login"] : commit["committer"]["name"],
         :message => commit["message"],
-        :date_time => commit["committed_date"]}
+        :date_time => commit["committed_date"]
+      }
     end
     commits
   end
