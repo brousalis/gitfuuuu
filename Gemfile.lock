@@ -31,3 +31,6 @@ DEPENDENCIES
   haml
   sinatra
   sinatra-reloader
+  httparty
+  ruby-stemmer
+  json
