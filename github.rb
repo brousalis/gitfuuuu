@@ -6,7 +6,7 @@ require 'json'
 class GitHub
   include HTTParty
   base_uri 'http://github.com/api/v2'
-  
+
   API = {
     :search => '/yaml/repos/search/',
     :commits => '/json/commits/list/',
@@ -14,19 +14,25 @@ class GitHub
   }
 
   def self.search_for_repo(repo)
-    search_repos(repo).map {|r| r[:name]} 
+    repos = []
+    repos += search_repos(repo).map do |r|
+      {
+        :name => r[:name],
+        :owner=> r[:owner]
+      }
+    end
+    repos
   end
 
   def self.analyze_repo(repo)
     words = self.profanity_list
     commits_with_profanity = []
     word_count = {}
-      
+
     commits = self.get_commits(repo)
     commits.each do |commit|
       commit[:message].split(" ").each do |word|
-        word.downcase!
-        word = Lingua::Stemmer.new.stem word
+        word = Lingua::Stemmer.new.stem word.downcase!
         if words.include?(word)
           word_count[word] ||= 0
           word_count[word] += 1
@@ -53,13 +59,13 @@ class GitHub
   def self.get_commits(repo)
     commits = []
     json = self.get(API[:commits]+"#{repo[:user]}/#{repo[:repository]}/master/")["commits"]
-    commits += json.map { |commit| 
+    commits += json.map do |commit|
       {
-        :user => commit["committer"]["login"] != "" ? commit["committer"]["login"] : commit["committer"]["name"], 
-        :message => commit["message"], 
+        :user => commit["committer"]["login"] != "" ? commit["committer"]["login"] : commit["committer"]["name"],
+        :message => commit["message"],
         :date_time => commit["committed_date"]
       }
-    }
+    end
     commits
   end
 
@@ -67,7 +73,7 @@ class GitHub
     words = []
     File.open('profanity.txt', 'r') do |file|
       words += file.gets.split(",")
-    end   
+    end
     words
   end
 

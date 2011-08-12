@@ -14,6 +14,7 @@
 
   %link(rel="stylesheet" href="stylesheets/style.css")
   %link(rel="stylesheet" href="stylesheets/app.css")
+  %link(rel="stylesheet" href="aristo/ui.css")
 
   %script(type="text/javascript" src="javascripts/libs/modernizr-1.7.min.js")
   %script{:type => 'text/javascript', :src => 'http://use.typekit.com/fhb0qqm.js'}
@@ -25,13 +26,14 @@
       .panel
         .header
           %h1
-            %a{:href=>"/"} git fuuuu
+            %a{:href=>"/"} 
+              git     
+              %span fuuuu
           %h2 A GitHub curse word analyzer
           %a#info{:href => "#"} 
         %form{:action => "/repos"} 
           .rage
           %label{:style => "display:none;", :for => "repo"} Repo
           %input{:name => "repo", :placeholder => "What repository to analyze?", :type => "text"}/
-
   = partial :'partials/javascripts'
   = partial :'partials/analytics'
