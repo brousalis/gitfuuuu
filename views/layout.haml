@@ -27,16 +27,16 @@
         .header
           %h1
             %a{:href=>"/"} 
-              git     
+              git
               %span fuuuu
           %h2 A GitHub curse word analyzer
-          %a#back{:href => "#"} 
-        %form{:action => "/repos"} 
-          .rage
-          %label{:style => "display:none;", :for => "repo"} Repo
-          %input{:name => "repo", :placeholder => "What repository to analyze", :type => "text"}/
+        %form
+          %input{:name => "repo", :placeholder=> "What repository to analyze", :class=>"input-text", :type => "text"}/
 
       .results
-        Test motherfucker
+        %a#back{:href => "#"}
+        %h1 
+        %h2 Fuck. You.
+
   = partial :'partials/javascripts'
   = partial :'partials/analytics'
