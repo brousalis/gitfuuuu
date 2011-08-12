@@ -16,7 +16,8 @@ $(document).ready(function(){
           response($.map(data, function(item) {
             return {
               label: item.name + " by " + item.owner,
-              value: item.owner
+              owner: item.owner,
+              name: item.name
             }
           }));
         }
@@ -24,8 +25,15 @@ $(document).ready(function(){
     },
     select: function(e, ui) {
       $(".panel").animate({
-        marginTop: "-=80px"          
+        marginTop: "60px"          
       }, 700);      
+      $(".results").delay(700).fadeIn(1000);
+      $.ajax({
+         url: '/repo/' + ui.item.owner + '/' + ui.item.name,
+         success: function(data) {
+          $('.results').html(data.ratio);
+         }
+      });
     }
   });
 });

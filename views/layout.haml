@@ -30,10 +30,13 @@
               git     
               %span fuuuu
           %h2 A GitHub curse word analyzer
-          %a#info{:href => "#"} 
+          %a#back{:href => "#"} 
         %form{:action => "/repos"} 
           .rage
           %label{:style => "display:none;", :for => "repo"} Repo
           %input{:name => "repo", :placeholder => "What repository to analyze", :type => "text"}/
+
+      .results
+        Test motherfucker
   = partial :'partials/javascripts'
   = partial :'partials/analytics'

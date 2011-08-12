@@ -1,5 +1,6 @@
-get '/repo/:r/?' do
+get '/repo/:u/:r/?' do
   content_type :json
-  GitHub.search_for_repo(params[:r]).to_json
+  repo = {:user => params[:u], :repo => params[:r]}
+  GitHub.analyze_repo(repo).to_json
 end 
 

@@ -58,7 +58,7 @@ class GitHub
 
   def self.get_commits(repo)
     commits = []
-    json = self.get(API[:commits]+"#{repo[:user]}/#{repo[:repository]}/master/")["commits"]
+    json = self.get(API[:commits]+"#{repo[:user]}/#{repo[:repo]}/master/")["commits"]
     commits += json.map do |commit|
       {
         :user => commit["committer"]["login"] != "" ? commit["committer"]["login"] : commit["committer"]["name"],

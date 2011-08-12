@@ -13,10 +13,6 @@ configure do
   set :haml, { :format => :html5 }
 end
 
-configure :development do
-  require "sinatra/reloader"
-end
-
 configure :production do
   set :haml, { :ugly => true }
 end
